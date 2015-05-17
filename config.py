@@ -3,9 +3,11 @@
 """
 Config File Wrapper
 """
+import os
 from ConfigParser import ConfigParser
 
-CONF_PATH = './config.ini'
+_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
+CONF_PATH = os.path.join(_ROOT_PATH, './config.ini')
 
 
 class ConfParser(object):

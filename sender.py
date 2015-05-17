@@ -6,6 +6,7 @@ Sender Strategies.
 import smtplib
 import requests
 import sys
+import os
 from config import ConfMixin
 from abc import ABCMeta, abstractmethod
 
@@ -64,11 +65,16 @@ class FileOutput(Output):
 
     conf_section = 'File'
 
+    @property
+    def file_path(self):
+        return os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                            self.conf.FILE_PATH)
+
     def send(self, message):
         """
         Overwrite ostream with a file, output message.
         """
-        with open(self.conf.FILE_PATH, 'w') as f:
+        with open(self.file_path, 'w') as f:
             self.output(f, message.decode('utf8'))
 
 
@@ -163,8 +169,10 @@ class SenderManager(ConfMixin):
         available when 'File' sender is On
         """
         file_sender = SENDERS['File']()
+        file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                 file_sender.conf.FILE_PATH)
         try:
-            f = open(file_sender.conf.FILE_PATH, 'r')
+            f = open(file_path, 'r')
         except (IOError, OSError) as e:
             # Saved File does not exist, Stop checking, and return False
             return False

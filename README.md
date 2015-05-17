@@ -1,5 +1,8 @@
 # simple-page-monitor  
 
+[![Build Status](https://travis-ci.org/mapler/simple-page-monitor.svg?branch=master)](https://travis-ci.org/mapler/simple-page-monitor)
+[![Coverage Status](https://coveralls.io/repos/mapler/simple-page-monitor/badge.svg?branch=master)](https://coveralls.io/r/mapler/simple-page-monitor?branch=master)    
+
 Fetch Keywords in Page, and notify. 
  
 (I use it to check Refurbished Mac.)
@@ -36,7 +39,7 @@ SENDERS=Output
 ```
 ```
 [Page]
-URL=http://website.which.you.want.to.monitor
+URL=Url to monitor
 KEYWORDS=Keyword1
          Keyword2
 OUTPUT_FORMAT=<h3>Matched.</h3>

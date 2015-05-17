@@ -89,7 +89,7 @@ class MailSender(SenderBase, ConfMixin):
         message = """\nFrom: {}\nTo: {}\nSubject: {}\n\n{}""".format(self.conf.FROM,
                                                                     self.conf.TO,
                                                                     self.conf.SUBJECT,
-                                                                    str(message))
+                                                                    unicode(message))
         self.server.sendmail(self.conf.FROM, self.conf.TO, message)
         self.server.close()
         print 'sent mail:', message
@@ -109,7 +109,7 @@ class Mailgun(SenderBase, ConfMixin):
         data = {'from': self.conf.FROM,
                 'to': [self.conf.TO],
                 'subject': self.conf.SUBJECT,
-                'text': str(message)}
+                'text': unicode(message)}
         ret = requests.post(self.url, auth=auth, data=data)
         ret.raise_for_status()
 

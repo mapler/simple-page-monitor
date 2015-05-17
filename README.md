@@ -5,7 +5,7 @@
 
 Fetch Keywords in Page, and notify. 
  
-(I use it to check Refurbished Mac.)
+(I use it as a [Refurbished Mac](http://store.apple.com/jp/browse/home/specialdeals/mac/macbook_air) Stock Checker)
 
 
 ## Requirement
